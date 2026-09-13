@@ -44,4 +44,12 @@ Route::get('/dashboard', function () {
     return redirect()->route('alunos.index');
 })->middleware('auth')->name('dashboard');
 
+Route::get('/admin', function () {
+    return 'Área administrativa - acesso permitido!';
+})->middleware(['auth', 'role:admin']);
+
+Route::get('/professor', function () {
+    return 'Área do professor - acesso permitido!';
+})->middleware(['auth', 'role:professor']);
+
 require __DIR__.'/auth.php';
