@@ -19,17 +19,17 @@ class AlunoPolicy
 
     public function create(User $user): bool
     {
-        return true;
+        return $user->role === User::ROLE_ADMIN;
     }
 
     public function update(User $user, Aluno $aluno): bool
     {
-        return true;
+        return $user->role === User::ROLE_PROFESSOR;
     }
 
     public function delete(User $user, Aluno $aluno): bool
     {
-        return true;
+        return $user->role === User::ROLE_ADMIN;
     }
 
     public function restore(User $user, Aluno $aluno): bool

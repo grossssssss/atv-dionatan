@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlunoController;
 
@@ -38,8 +39,9 @@ Route::get('/quantidade-alunos', [AlunoController::class, 'quantidade']);
 Route::get('/cursos/{curso}/alunos', [AlunoController::class, 'alunosDoCurso'])
     ->name('cursos.alunos');
 
-Route::resource('alunos', AlunoController::class);
-
+Route::resource('alunos', AlunoController::class)
+    ->middleware('auth');
+    
 Route::get('/dashboard', function () {
     return redirect()->route('alunos.index');
 })->middleware('auth')->name('dashboard');

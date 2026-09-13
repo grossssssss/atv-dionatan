@@ -6,6 +6,7 @@ use App\Models\Aluno;
 use App\Http\Requests\AlunoRequest;
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use Illuminate\Support\Facades\Gate;
 
 class AlunoController extends Controller
 {
@@ -18,6 +19,8 @@ class AlunoController extends Controller
 
     public function create()
     {
+        Gate::authorize('create', Aluno::class);
+
         return view('alunos.create');
     }
 

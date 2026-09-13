@@ -25,10 +25,35 @@
 
                     |
 
-                    <a href="{{ route('alunos.edit', $aluno->id) }}">
-                        Editar
-                    </a>
+                    @can('update', $aluno)
+                        <a href="{{ route('alunos.edit', $aluno->id) }}">
+                            Editar
+                        </a>
+                    @endcan
                 </li>
+                @can('delete', $aluno)
+                @can('create', App\Models\Aluno::class)
+                    <a href="{{ route('alunos.create') }}">
+                        Cadastrar novo aluno
+                    </a>
+
+                @endcan
+                <form
+                    action="{{ route('alunos.destroy', $aluno->id) }}"
+                    method="POST"
+                    style="display:inline"
+                >
+
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit">
+                        Excluir
+                    </button>
+
+                </form>
+
+            @endcan
 
             @endforeach
         </ul>
