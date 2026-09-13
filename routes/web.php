@@ -39,3 +39,9 @@ Route::get('/cursos/{curso}/alunos', [AlunoController::class, 'alunosDoCurso'])
     ->name('cursos.alunos');
 
 Route::resource('alunos', AlunoController::class);
+
+Route::get('/dashboard', function () {
+    return redirect()->route('alunos.index');
+})->middleware('auth')->name('dashboard');
+
+require __DIR__.'/auth.php';
