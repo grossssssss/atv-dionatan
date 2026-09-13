@@ -11,8 +11,6 @@ Route::get('/sobre', function () {
     return 'Página Sobre';
 });
 
-Route::resource('alunos', AlunoController::class);
-
 Route::get('/contato', function () {
     return 'Página de Contato';
 });
@@ -28,3 +26,14 @@ Route::get('/categoria/{id}', function ($id) {
 Route::get('/usuario/{id}', function ($id) {
     return "Usuário selecionado: $id";
 });
+
+Route::get('/alunos-curso/{curso}', [AlunoController::class, 'porCurso']);
+
+Route::get('/alunos-nome/{palavra}', [AlunoController::class, 'buscarNome']);
+
+Route::get('/alunos-recentes', [AlunoController::class, 'recentes']);
+
+Route::get('/quantidade-alunos', [AlunoController::class, 'quantidade']);
+
+
+Route::resource('alunos', AlunoController::class);

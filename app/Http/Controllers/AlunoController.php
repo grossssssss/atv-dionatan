@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno;
+
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
@@ -58,4 +60,27 @@ class AlunoController extends Controller
     {
         return "Aluno $id excluído";
     }
+public function porCurso(string $curso)
+{
+    return Aluno::where('curso', $curso)->get();
+}
+
+public function buscarNome(string $palavra)
+{
+    return Aluno::where('nome', 'like', "%{$palavra}%")->get();
+}
+
+public function recentes()
+{
+    return Aluno::orderByDesc('created_at')
+        ->take(5)
+        ->get();
+}
+
+public function quantidade()
+{
+    return [
+        'quantidade' => Aluno::count()
+    ];
+}
 }
