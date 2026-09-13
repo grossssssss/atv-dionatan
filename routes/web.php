@@ -35,5 +35,7 @@ Route::get('/alunos-recentes', [AlunoController::class, 'recentes']);
 
 Route::get('/quantidade-alunos', [AlunoController::class, 'quantidade']);
 
+Route::get('/cursos/{curso}/alunos', [AlunoController::class, 'alunosDoCurso'])
+    ->name('cursos.alunos');
 
 Route::resource('alunos', AlunoController::class);
