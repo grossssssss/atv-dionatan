@@ -1,3 +1,5 @@
 <h1>Detalhes do Aluno</h1>
 
-<p>Página responsável por mostrar os dados de um aluno.</p>
+<p>Aqui serão exibidas as informações do aluno selecionado.</p>
+
+<a href="/alunos">Voltar para a lista</a>

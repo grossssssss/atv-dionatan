@@ -1,3 +1,5 @@
 <h1>Cadastrar Aluno</h1>
 
-<p>Página responsável pelo cadastro de alunos.</p>
+<p>Formulário para cadastro de um novo aluno.</p>
+
+<a href="/alunos">Voltar para a lista</a>
