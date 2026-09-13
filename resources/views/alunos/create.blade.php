@@ -12,33 +12,51 @@
 
         <div>
             <label for="nome">Nome:</label>
+
             <input
                 type="text"
                 id="nome"
                 name="nome"
+                value="{{ old('nome') }}"
             >
+
+            @error('nome')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <br>
 
         <div>
             <label for="email">Email:</label>
+
             <input
                 type="email"
                 id="email"
                 name="email"
+                value="{{ old('email') }}"
             >
+
+            @error('email')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <br>
 
         <div>
             <label for="curso">Curso:</label>
+
             <input
                 type="text"
                 id="curso"
                 name="curso"
+                value="{{ old('curso') }}"
             >
+
+            @error('curso')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <br>

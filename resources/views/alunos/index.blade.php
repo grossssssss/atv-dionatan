@@ -5,6 +5,9 @@
 @section('content')
 
     <h2>Lista de Alunos</h2>
+    @if(session('sucesso'))
+    <p>{{ session('sucesso') }}</p>
+@endif
 
     @if($alunos->count() > 0)
 
