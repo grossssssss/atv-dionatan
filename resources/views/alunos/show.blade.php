@@ -6,11 +6,25 @@
 
     <h2>Detalhes do Aluno</h2>
 
-    @if($id)
-        <p>Aluno selecionado: {{ $id }}</p>
-    @else
-        <p>Aluno não encontrado.</p>
-    @endif
+    <p>
+        <strong>ID:</strong>
+        {{ $aluno->id }}
+    </p>
+
+    <p>
+        <strong>Nome:</strong>
+        {{ $aluno->nome }}
+    </p>
+
+    <p>
+        <strong>Email:</strong>
+        {{ $aluno->email }}
+    </p>
+
+    <p>
+        <strong>Curso:</strong>
+        {{ $aluno->curso }}
+    </p>
 
     <a href="{{ route('alunos.index') }}">
         Voltar

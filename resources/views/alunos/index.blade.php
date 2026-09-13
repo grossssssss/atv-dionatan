@@ -6,24 +6,28 @@
 
     <h2>Lista de Alunos</h2>
 
-    @if(count($alunos) > 0)
+    @if($alunos->count() > 0)
 
         <ul>
-
             @foreach($alunos as $aluno)
 
                 <li>
-                    {{ $aluno['nome'] }}
+                    {{ $aluno->nome }}
                     -
-                    {{ $aluno['curso'] }}
+                    {{ $aluno->curso }}
 
-                    <a href="{{ route('alunos.show', $aluno['id']) }}">
+                    <a href="{{ route('alunos.show', $aluno->id) }}">
                         Ver aluno
+                    </a>
+
+                    |
+
+                    <a href="{{ route('alunos.edit', $aluno->id) }}">
+                        Editar
                     </a>
                 </li>
 
             @endforeach
-
         </ul>
 
     @else

@@ -3,30 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
-
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
     public function index()
     {
-        $alunos = [
-            [
-                'id' => 1,
-                'nome' => 'João',
-                'curso' => 'Desenvolvimento de Sistemas'
-            ],
-            [
-                'id' => 2,
-                'nome' => 'Maria',
-                'curso' => 'Engenharia de Software'
-            ],
-            [
-                'id' => 3,
-                'nome' => 'Pedro',
-                'curso' => 'Sistemas de Informação'
-            ]
-        ];
+        $alunos = Aluno::all();
 
         return view('alunos.index', compact('alunos'));
     }
@@ -38,49 +21,74 @@ class AlunoController extends Controller
 
     public function store(Request $request)
     {
-        return 'Aluno cadastrado';
+        Aluno::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'curso' => $request->curso,
+        ]);
+
+        return redirect()->route('alunos.index');
     }
 
     public function show(string $id)
     {
-        return view('alunos.show', compact('id'));
+        $aluno = Aluno::findOrFail($id);
+
+        return view('alunos.show', compact('aluno'));
     }
 
     public function edit(string $id)
     {
-        return view('alunos.edit');
+        $aluno = Aluno::findOrFail($id);
+
+        return view('alunos.edit', compact('aluno'));
     }
 
     public function update(Request $request, string $id)
     {
-        return "Aluno $id atualizado";
+        $aluno = Aluno::findOrFail($id);
+
+        $aluno->update([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'curso' => $request->curso,
+        ]);
+
+        return redirect()->route('alunos.index');
     }
 
     public function destroy(string $id)
     {
-        return "Aluno $id excluído";
+        $aluno = Aluno::findOrFail($id);
+
+        $aluno->delete();
+
+        return redirect()->route('alunos.index');
     }
-public function porCurso(string $curso)
-{
-    return Aluno::where('curso', $curso)->get();
-}
 
-public function buscarNome(string $palavra)
-{
-    return Aluno::where('nome', 'like', "%{$palavra}%")->get();
-}
+    // ATV 11
 
-public function recentes()
-{
-    return Aluno::orderByDesc('created_at')
-        ->take(5)
-        ->get();
-}
+    public function porCurso(string $curso)
+    {
+        return Aluno::where('curso', $curso)->get();
+    }
 
-public function quantidade()
-{
-    return [
-        'quantidade' => Aluno::count()
-    ];
-}
+    public function buscarNome(string $palavra)
+    {
+        return Aluno::where('nome', 'like', "%{$palavra}%")->get();
+    }
+
+    public function recentes()
+    {
+        return Aluno::orderByDesc('created_at')
+            ->take(5)
+            ->get();
+    }
+
+    public function quantidade()
+    {
+        return [
+            'quantidade' => Aluno::count()
+        ];
+    }
 }
