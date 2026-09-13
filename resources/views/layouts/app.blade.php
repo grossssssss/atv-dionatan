@@ -11,6 +11,8 @@
 
     <header>
         <h1>Sistema de Alunos</h1>
+
+        @include('partials.menu')
     </header>
 
     <main>
@@ -18,6 +20,7 @@
     </main>
 
     <footer>
+        <hr>
         <p>&copy; 2026 - Sistema de Alunos</p>
     </footer>
 

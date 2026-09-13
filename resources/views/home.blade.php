@@ -1,6 +1,11 @@
+@extends('layouts.app')
 
-<h1>Home</h1>
+@section('title', 'Home')
 
-<p>Bem-vindo ao Sistema de Alunos.</p>
+@section('content')
 
-<a href="/alunos">Ver alunos</a>
+    <h2>Home</h2>
+
+    <p>Bem-vindo ao Sistema de Alunos.</p>
+
+@endsection

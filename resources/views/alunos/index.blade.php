@@ -1,5 +1,35 @@
-<h1>Lista de Alunos</h1>
+@extends('layouts.app')
 
-<p>Aqui serão exibidos todos os alunos cadastrados.</p>
+@section('title', 'Lista de Alunos')
 
-<a href="/alunos/create">Cadastrar novo aluno</a>
+@section('content')
+
+    <h2>Lista de Alunos</h2>
+
+    @if(count($alunos) > 0)
+
+        <ul>
+
+            @foreach($alunos as $aluno)
+
+                <li>
+                    {{ $aluno['nome'] }}
+                    -
+                    {{ $aluno['curso'] }}
+
+                    <a href="{{ route('alunos.show', $aluno['id']) }}">
+                        Ver aluno
+                    </a>
+                </li>
+
+            @endforeach
+
+        </ul>
+
+    @else
+
+        <p>Nenhum aluno cadastrado.</p>
+
+    @endif
+
+@endsection

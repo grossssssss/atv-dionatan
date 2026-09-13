@@ -8,7 +8,25 @@ class AlunoController extends Controller
 {
     public function index()
     {
-        return view('alunos.index');
+        $alunos = [
+            [
+                'id' => 1,
+                'nome' => 'João',
+                'curso' => 'Desenvolvimento de Sistemas'
+            ],
+            [
+                'id' => 2,
+                'nome' => 'Maria',
+                'curso' => 'Engenharia de Software'
+            ],
+            [
+                'id' => 3,
+                'nome' => 'Pedro',
+                'curso' => 'Sistemas de Informação'
+            ]
+        ];
+
+        return view('alunos.index', compact('alunos'));
     }
 
     public function create()
@@ -23,7 +41,7 @@ class AlunoController extends Controller
 
     public function show(string $id)
     {
-        return view('alunos.show');
+        return view('alunos.show', compact('id'));
     }
 
     public function edit(string $id)

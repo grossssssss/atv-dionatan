@@ -1,5 +1,19 @@
-<h1>Detalhes do Aluno</h1>
+@extends('layouts.app')
 
-<p>Aqui serão exibidas as informações do aluno selecionado.</p>
+@section('title', 'Detalhes do Aluno')
 
-<a href="/alunos">Voltar para a lista</a>
+@section('content')
+
+    <h2>Detalhes do Aluno</h2>
+
+    @if($id)
+        <p>Aluno selecionado: {{ $id }}</p>
+    @else
+        <p>Aluno não encontrado.</p>
+    @endif
+
+    <a href="{{ route('alunos.index') }}">
+        Voltar
+    </a>
+
+@endsection

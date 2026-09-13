@@ -1,5 +1,15 @@
-<h1>Cadastrar Aluno</h1>
+@extends('layouts.app')
 
-<p>Formulário para cadastro de um novo aluno.</p>
+@section('title', 'Cadastrar Aluno')
 
-<a href="/alunos">Voltar para a lista</a>
+@section('content')
+
+    <h2>Cadastrar Aluno</h2>
+
+    <p>Aqui será criado o formulário de cadastro do aluno.</p>
+
+    <a href="{{ route('alunos.index') }}">
+        Voltar
+    </a>
+
+@endsection
